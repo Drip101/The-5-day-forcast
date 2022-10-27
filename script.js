@@ -36,7 +36,7 @@ function createbtn() {
         getcity(newbtn.innerText)
     })
 }
-
+//added statuses of the weather to display for user on the screen.
 function createData(data) {
     console.log(data);
     _s('#city').textContent = data.city.name
