@@ -16,11 +16,12 @@ fetch('https://api.github.com/users/latinobull/repos').then((data) => {
 
 console.log(localStorage.getItem('city'))*/
 
-// http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
+//api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=00155ff66eca5e916eeb91e633dbb8f0
 
 let userInput = document.querySelector("input")
 let searchbtn = document.getElementById("search")
 let history = document.getElementById("history")
+let _s = e => document.querySelector(e)
 //https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 const API = "00155ff66eca5e916eeb91e633dbb8f0"
 searchbtn.addEventListener("click", () => {
@@ -31,7 +32,33 @@ function createbtn() {
     let newbtn = document.createElement("button")
     newbtn.innerText = userInput.value
     history.appendChild(newbtn)
+    newbtn.addEventListener("click", () => {
+        getcity(newbtn.innerText)
+    })
 }
+
+function createData(data) {
+    console.log(data);
+    _s('#city').textContent = data.city.name
+    _s("#temp").innerHTML = "temp: " + data.list[0].main.temp + "&deg;F"
+    _s("#wind").textContent = "wind: " + data.list[0].wind.speed + "MPH"
+    _s("#hum").textContent = "humidity: " + data.list[0].main.humidity + " %"
+    _s("#futureConditions").innerHTML = ""
+    for (let i = 0; i < 4; i++) {
+        let div = document.createElement("div")
+        div.innerHTML = `
+  <h4>${data.list[i * 8].dt_txt.split(" ")[0]}</h4>
+<p>Temp: ${data.list[i * 8].main.temp}&deg;F</p>
+<p>Wind: ${data.list[i * 8].wind.speed} MPH</p>
+<p>Humidity: ${data.list[i * 8].main.humidity} %</p>
+  `
+        _s("#futureConditions").append(div)
+    }
+}
+
 function getcity(city) {
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API}`).then(response => response.json()).then(a => console.log(a))
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API}`).then(response => response.json()).then(a => getWeather(a[0].lat, a[0].lon))
+}
+function getWeather(la, lo) {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${la}&lon=${lo}&appid=${API}`).then(response => response.json()).then(a => createData(a))
 }
