@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 main {
     display: grid;
     grid-template-columns: 30% 70%;
@@ -16,14 +17,15 @@ h2 {
     margin: 5px 0;
 }
 
-input,button{
+input,
+button {
     display: block;
     width: 100%;
     margin-bottom: 10px;
     padding: 10px;
 }
 
-#search{
+#search {
     background-color: blue;
     color: white;
     border-radius: 6px;
@@ -33,7 +35,8 @@ input,button{
 p {
     margin-bottom: 6px;
 }
-.today{
+
+.today {
     padding: 20px;
     border: 1.5px solid black;
     margin-bottom: 25px;
@@ -42,12 +45,12 @@ p {
 }
 
 #futureConditions {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
 }
 
-#futureConditions > div {
+#futureConditions>div {
     border: 1.5px solid black;
     padding: 10px;
     background-color: darkblue;
@@ -59,4 +62,3 @@ img {
     width: 40px;
     margin: 15px 0;
 }
-
