@@ -36,22 +36,30 @@ function createbtn() {
         getcity(newbtn.innerText)
     })
 }
+//if the weather in the object matches rain it will show the rain image.
+function getImage(a){
+    return a==="Rain"?"rainy": a==="Clouds"?"cloudy":a==="Sun"?"sunny":"calm"
+}
 //added statuses of the weather to display for user on the screen.
 function createData(data) {
     console.log(data);
-    _s('#city').textContent = data.city.name
+    //added current date
+    _s('#city').textContent = data.city.name+" ("+data.list[0].dt_txt.split(" ")[0]+")"
     _s("#temp").innerHTML = "temp: " + data.list[0].main.temp + "&deg;F"
     _s("#wind").textContent = "wind: " + data.list[0].wind.speed + "MPH"
     _s("#hum").textContent = "humidity: " + data.list[0].main.humidity + " %"
+    _s("#img").src=getImage(data.list[0].weather[0].main)+".png"
     _s("#futureConditions").innerHTML = ""
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i <= 4; i++) {
         let div = document.createElement("div")
         div.innerHTML = `
   <h4>${data.list[i * 8].dt_txt.split(" ")[0]}</h4>
+  <img src="${getImage(data.list[i*8].weather[0].main)}.png">
 <p>Temp: ${data.list[i * 8].main.temp}&deg;F</p>
 <p>Wind: ${data.list[i * 8].wind.speed} MPH</p>
 <p>Humidity: ${data.list[i * 8].main.humidity} %</p>
   `
+  console.log(i*8);
         _s("#futureConditions").append(div)
     }
 }

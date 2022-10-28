@@ -1,0 +1,62 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+main {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+section {
+    padding: 35px 20px;
+}
+
+h2 {
+    margin: 5px 0;
+}
+
+input,button{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#search{
+    background-color: blue;
+    color: white;
+    border-radius: 6px;
+    border: none;
+}
+
+p {
+    margin-bottom: 6px;
+}
+.today{
+    padding: 20px;
+    border: 1.5px solid black;
+    margin-bottom: 25px;
+    background-color: darkblue;
+    color: white;
+}
+
+#futureConditions {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 20px;
+}
+
+#futureConditions > div {
+    border: 1.5px solid black;
+    padding: 10px;
+    background-color: darkblue;
+    color: white;
+}
+
+img {
+    display: block;
+    width: 40px;
+    margin: 15px 0;
+}
+
