@@ -62,3 +62,12 @@ img {
     width: 40px;
     margin: 15px 0;
 }
+
+#clear {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    display: inline-block;
+    right: auto;
+    max-width: fit-content;
+}

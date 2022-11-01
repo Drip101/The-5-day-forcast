@@ -70,3 +70,7 @@ function getcity(city) {
 function getWeather(la, lo) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${la}&lon=${lo}&appid=${API}`).then(response => response.json()).then(a => createData(a))
 }
+
+_s("#clear").addEventListener("click", ()=>{
+    _s("#history").innerHTML=""
+})
